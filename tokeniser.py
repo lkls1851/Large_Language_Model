@@ -42,7 +42,7 @@ class SimpleTokeniser():
             elif el ==-1:
                 pass 
             else:
-                string+=self.inverse_hash[el]
+                string+=(self.inverse_hash[el]+' ')
 
         return string
 
