@@ -21,6 +21,8 @@ class SimpleTokeniser():
     def decode(self, id):
         if id not in self.inverse_hash.keys():
             return -1
+        elif id ==-1:
+            return -1
         else:
             return self.inverse_hash[id]
 
