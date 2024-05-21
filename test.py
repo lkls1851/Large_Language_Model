@@ -16,3 +16,17 @@ print(tokeniser.encode('is'), '\n')
 
 
 print(tokeniser.decode(111), '\n')
+
+
+## Encode a text
+
+txt='It is the last painting'
+
+print(tokeniser.encode(txt), '\n')
+
+
+## Convert a list of IDs to text
+
+ids=[111, 876, 992, 0, 4]
+
+print(tokeniser.decode(ids))
