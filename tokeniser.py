@@ -12,18 +12,37 @@ class SimpleTokeniser():
         self.inverse_hash={index:token for index, token in enumerate(self.tokens)}
 
     def encode(self, x):
-        if x not in self.hashmap.keys():
-            return -1
+
+        tokens=re.split(r'([:,;.!?"()\']|--|\s)', x)
+        tokens=[el.strip() for el in tokens if el.strip()]
+        ids=[]
+        for el in tokens:
         
-        else:
-            return self.hashmap[x]
+            if el not in self.hashmap.keys():
+                ids.append(-1)
+        
+            else:
+                ids.append(self.hashmap[el])
+        
+        return ids
     
     def decode(self, id):
-        if id not in self.inverse_hash.keys():
-            return -1
-        elif id ==-1:
-            return -1
-        else:
-            return self.inverse_hash[id]
 
+        string=''
+        if type(id)==int:
+            meta_list=[]
+            meta_list.append(id)
+            id=meta_list
+
+
+        for el in id:
+
+            if el not in self.inverse_hash.keys():
+                pass
+            elif el ==-1:
+                pass 
+            else:
+                string+=self.inverse_hash[el]
+
+        return string
 
