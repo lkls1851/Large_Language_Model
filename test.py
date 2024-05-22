@@ -78,7 +78,7 @@ txt='Hare Krishna Om Namaha Shivaaya'
 print('Test:8 \n')
 
 print(bpe_tokeniser.encode(txt), '\n')
-
+40904090
 print('Test:9 \n')
 
 ids=[39, 533, 38594, 16543, 17871, 12236, 33995, 11729]
@@ -92,3 +92,7 @@ print(bpe_tokeniser.encode('cvSAGD WFUNWB XJVCBSJDVBksjahd'), '\n')
 print('Test:11 \n')
 
 print(bpe_tokeniser.decode([33967, 4090, 45113, 370, 42296, 45607, 1395, 41, 15922, 4462, 37882, 44526, 591, 31558, 67] ), '\n')
+
+
+print('Test:12 \n')
+print(bpe_tokeniser.decode(33967), '\n')
