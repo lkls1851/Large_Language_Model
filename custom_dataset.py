@@ -10,7 +10,7 @@ class MyDataset:
         self.tokens=self.tokeniser.encode(self.text)
         self.data=[]
         for i in range(len(self.tokens)-self.size):
-            x=self.tokens[:i+self.size]
+            x=self.tokens[i:i+self.size]
             y=self.tokens[i+self.size]
             self.data.append([x,y])
     
