@@ -96,3 +96,61 @@ print(bpe_tokeniser.decode([33967, 4090, 45113, 370, 42296, 45607, 1395, 41, 159
 
 print('Test:12 \n')
 print(bpe_tokeniser.decode(33967), '\n')
+
+
+print('Test:13 \n')
+
+from custom_dataset import MyDataset
+
+mydataloader=MyDataset(path_to_text=path_to_txt, context_size=4)
+
+count=0
+for i, (x,y) in enumerate(mydataloader):
+    count+=1
+    print(x, '---->', y)
+    if count==5:
+        break
+    else:
+        continue
+
+
+print('Test:14 \n')
+
+from gpt_dataset import GPTDataset
+my_dataset=GPTDataset(path_to_text=path_to_txt, context_size=5, stride=1)
+
+for i, (x,y) in enumerate(my_dataset):
+    if i<5:
+        print(x, '--->', y)
+    else:
+        break
+
+
+print('\n')
+print('Test:15 \n')
+
+from gpt_dataset import GPTDataset
+my_dataset=GPTDataset(path_to_text=path_to_txt, context_size=5, stride=2)
+
+for i, (x,y) in enumerate(my_dataset):
+    if i<5:
+        print(x, '--->', y)
+    else:
+        break
+
+
+print('\n')
+print('Test:16 \n')
+## Test Dataloader
+
+import torch
+from torch.utils.data import DataLoader
+
+dataloader=DataLoader(dataset=my_dataset, batch_size=1, shuffle=False)
+count=0
+for i, (x, y) in enumerate(dataloader):
+    if count<=5:
+        print(x, ' ---> ', y, '\n')
+        count+=1
+    else:
+        break
