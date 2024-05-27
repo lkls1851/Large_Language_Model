@@ -154,3 +154,21 @@ for i, (x, y) in enumerate(dataloader):
         count+=1
     else:
         break
+
+
+print('\n')
+print('Test:17 \n')
+
+from embedding import Embedding
+
+txt='I am susmit'
+ids=bpe_tokeniser.encode(txt)
+embed=Embedding(ids=ids, num_emb_space=5)
+print(embed.weights())
+
+
+print('\n', 'Test:18 \n')
+
+## Extract the embedding for a specific id
+
+print(embed.forward(2))
