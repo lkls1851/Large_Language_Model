@@ -172,3 +172,15 @@ print('\n', 'Test:18 \n')
 ## Extract the embedding for a specific id
 
 print(embed.forward(2))
+
+
+print('\n', 'Test:19 \n')
+
+## Test to contrast between embedding and positional embedding
+## We will embed this sequence [1,2,3,2,1]; note length of input vector should be same as context length
+## For normal embedding, both the 2s should give same embedding but not in case of positional embedding
+
+from pos_embedding import PositionalEmbedding
+pos_embed=PositionalEmbedding(vocab_length=50257, num_emb_space=5, context_length=5)
+print('Normal Embedding:\n ', embed.forward([1,2,3,2,1]), '\n')
+print('Positional Embedding:\n ', pos_embed.forward([1,2,3,2,1]), '\n')
