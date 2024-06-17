@@ -184,3 +184,28 @@ from pos_embedding import PositionalEmbedding
 pos_embed=PositionalEmbedding(vocab_length=50257, num_emb_space=5, context_length=5)
 print('Normal Embedding:\n ', embed.forward([1,2,3,2,1]), '\n')
 print('Positional Embedding:\n ', pos_embed.forward([1,2,3,2,1]), '\n')
+
+
+print('\n', 'Test:20 \n')
+
+## Test to generate pos embedding from text
+txt='I am a brown fox'
+
+from bpe_tokeniser import BPETokeniser
+tok=BPETokeniser()
+pos_embed=PositionalEmbedding(vocab_length=50257, num_emb_space=3, context_length=1)
+
+vec=tok.encode(txt)
+print('Positional Embedding for the text is:',pos_embed.forward(vec), '\n')
+
+
+print('\n', 'Test 21', '\n')
+## Test for calculating attn scores for a query from a text
+from attentionv1 import Attentionv1
+txt='I am a brown fox'
+vec=tok.encode(txt)
+emb=pos_embed.forward(vec)
+## Assusme query is in the form of embedding
+attn=Attentionv1(inputs=emb)
+query=emb[2]
+print('Attention Scores for query is: ', attn.attn_scores(query=query) , '\n')
